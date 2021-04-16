@@ -1,10 +1,10 @@
-K8S_VERSION?=v1.20.5
+K8S_VERSION?=v1.21.0
 
 ARCH?=amd64
 ALL_ARCH=amd64 arm64
 
-IMAGE?=docker.io/rancher/hyperkube
-TAGEND?=rancher1
+IMAGE?=harbor.cumulus.openstack.hpc.cam.ac.uk/magnum/hyperkube
+TAGEND?=0
 
 K8S_STAGING:=$(shell mktemp -d)
 
@@ -50,10 +50,10 @@ clean:
 	rm -rf k8s-binaries
 
 build: k8s-binaries
-	docker build --pull -t ${IMAGE}:${K8S_VERSION}-${TAGEND}-${ARCH} -f Dockerfile .
+	docker build --pull -t ${IMAGE}:${K8S_VERSION}-${TAGEND} -f Dockerfile .
 
 push: build
-	docker push ${IMAGE}:${K8S_VERSION}-${TAGEND}-${ARCH} 
+	docker push ${IMAGE}:${K8S_VERSION}-${TAGEND}
 
 .PHONY: all build push clean all-build all-push-images all-push push-manifest k8s-binaries
 
