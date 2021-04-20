@@ -10,7 +10,7 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v2
       - name: Unpack binaries
-        run: "make k8s-binaries"
+        run: make k8s-binaries K8S_VERSION=${GITHUB_REF#refs/*/}
       - name: Push to GitHub Packages
         uses: docker/build-push-action@v1
         with:

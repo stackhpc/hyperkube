@@ -1,3 +1,3 @@
-FROM harbor.cumulus.openstack.hpc.cam.ac.uk/magnum/hyperkube-base:v0.0.1-linux-amd64
+FROM ghcr.io/stackhpc/hyperkube-base:v0.1.0
 
 COPY k8s-binaries/kube* /usr/local/bin/
